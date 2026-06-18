@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jill Barrott — Brand Communications · Strategy · Intentional Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── Tokens ─────────────────────────────────────────── */
+  :root {
+    --teal:      #4dd9c0;
+    --teal-dark: #2ab5a0;
+    --lime:      #c8e84a;
+    --navy:      #1e2d3a;
+    --slate:     #5a6472;
+    --slate-light: #8a939d;
+    --bg-start:  #dff0f7;
+    --bg-end:    #f5fbfd;
+    --white:     #ffffff;
+    --rule:      rgba(77,217,192,0.25);
+    --shadow:    0 2px 20px rgba(30,45,58,0.08);
+    --radius:    16px;
+    --script:    'Dancing Script', cursive;
+    --sans:      'Inter', sans-serif;
+  }
+
+  /* ── Reset ───────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    color: var(--slate);
+    background: var(--bg-end);
+    line-height: 1.65;
+  }
+
+  /* ── Shared section styles ───────────────────────────── */
+  .section {
+    background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 100%);
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .section + .section { border-top: 1px solid var(--rule); }
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* watermark signature */
+  .watermark {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--script);
+    font-size: 180px;
+    color: rgba(77,217,192,0.07);
+    pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* ── Footer bar ──────────────────────────────────────── */
+  .footer-bar {
+    height: 6px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--lime) 60%, var(--teal) 100%);
+  }
+
+  /* ── Eyebrow / label ─────────────────────────────────── */
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-bottom: 14px;
+  }
+
+  /* ── Hero ────────────────────────────────────────────── */
+  #hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    padding: 0;
+    background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  }
+  .hero-photo {
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 70px 60px 60px;
+  }
+  .hero-signature {
+    font-family: var(--script);
+    font-size: 72px;
+    color: var(--teal);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero-tagline {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+  .hero-tagline span { color: var(--slate-light); margin: 0 8px; }
+  .hero-contact {
+    margin-top: 32px;
+  }
+  .hero-contact a {
+    display: block;
+    color: var(--teal-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .hero-contact a:hover { text-decoration: underline; }
+  .hero-contact p { font-size: 15px; color: var(--slate); }
+
+  /* ── Intro / Hi I'm Jill ─────────────────────────────── */
+  #intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .intro-text h2 {
+    font-family: var(--sans);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 28px;
+    line-height: 1.15;
+  }
+  .intro-text p {
+    font-size: 16px;
+    color: var(--slate);
+    margin-bottom: 18px;
+  }
+  .intro-img {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .intro-img img { width: 100%; display: block; }
+
+  /* ── Quote slide ─────────────────────────────────────── */
+  #quote-1 {
+    text-align: center;
+    padding: 100px 60px;
+  }
+  .big-quote {
+    font-family: var(--sans);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--lime);
+    line-height: 1.2;
+    max-width: 900px;
+    margin: 0 auto 28px;
+  }
+  .quote-sig {
+    font-family: var(--script);
+    font-size: 44px;
+    color: var(--teal);
+    opacity: 0.6;
+  }
+
+  /* ── Case study section ──────────────────────────────── */
+  .case {
+    padding: 80px 60px;
+    background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 100%);
+    border-top: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .case-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .case-inner.reverse { direction: rtl; }
+  .case-inner.reverse > * { direction: ltr; }
+  .case-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-bottom: 12px;
+  }
+  .case h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+  .case-block { margin-bottom: 28px; }
+  .case-block h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--lime);
+    margin-bottom: 10px;
+  }
+  .case-block p {
+    font-size: 14.5px;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+  .case-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .case-block ul li {
+    font-size: 14.5px;
+    color: var(--slate);
+    padding: 5px 0 5px 18px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .case-block ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+  }
+  .case-visual {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--white);
+  }
+  .case-visual img { width: 100%; display: block; }
+  .case-visual-mock {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--navy);
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+  .metric-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .metric {
+    background: rgba(77,217,192,0.1);
+    border: 1px solid rgba(77,217,192,0.3);
+    border-radius: 10px;
+    padding: 14px 20px;
+    flex: 1;
+    min-width: 120px;
+  }
+  .metric-num {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--slate-light);
+    margin-top: 4px;
+  }
+
+  /* ── Leadership section ──────────────────────────────── */
+  #leadership-quote {
+    padding: 90px 60px;
+  }
+  .lq-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .lq-inner .eyebrow { margin-bottom: 10px; }
+  .lq-inner h2 {
+    font-size: clamp(28px, 4vw, 50px);
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1.15;
+    margin-bottom: 32px;
+    max-width: 800px;
+  }
+  .lq-inner > p {
+    font-size: 16px;
+    color: var(--slate);
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+
+  /* Philosophy pillars */
+  .pillars {
+    border-left: 3px solid var(--teal);
+    padding-left: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .pillar h3 {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--lime);
+    margin-bottom: 8px;
+  }
+  .pillar p {
+    font-size: 14.5px;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  /* ── Testimonials ────────────────────────────────────── */
+  #testimonials {
+    padding: 80px 60px;
+  }
+  .testimonials-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .testimonials-grid h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+  .testi-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+  }
+  .testi-card p {
+    font-size: 14.5px;
+    color: var(--slate);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .testi-card cite {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal-dark);
+    font-style: normal;
+  }
+  .blockquote-feature {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 40px 48px;
+    box-shadow: var(--shadow);
+    max-width: 1100px;
+  }
+  .bq-open {
+    position: absolute;
+    top: 20px; left: 28px;
+    font-family: var(--sans);
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--lime);
+    line-height: 1;
+    opacity: 0.8;
+  }
+  .bq-close {
+    position: absolute;
+    bottom: 10px; right: 28px;
+    font-family: var(--sans);
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--lime);
+    line-height: 1;
+    opacity: 0.8;
+  }
+  .blockquote-feature p {
+    font-size: 16.5px;
+    color: var(--slate);
+    line-height: 1.7;
+    padding: 0 20px;
+  }
+
+  /* ── Contact / CTA ───────────────────────────────────── */
+  #contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+  .contact-photo {
+    overflow: hidden;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .contact-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px 70px 70px 60px;
+    background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  }
+  .contact-content h2 {
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1.15;
+    margin-bottom: 32px;
+  }
+  .contact-content h2 span { display: block; }
+  .contact-details { margin-top: 28px; }
+  .contact-details .name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .contact-details .location {
+    font-size: 15px;
+    color: var(--slate);
+    margin-bottom: 24px;
+  }
+  .contact-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-light);
+    margin-bottom: 4px;
+    margin-top: 18px;
+  }
+  .contact-details a {
+    font-size: 15px;
+    color: var(--teal-dark);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .contact-details a:hover { text-decoration: underline; }
+  .contact-details p { font-size: 15px; color: var(--slate); }
+
+  /* ── Nav ─────────────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(223,240,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-sig {
+    font-family: var(--script);
+    font-size: 28px;
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* ── Responsive ──────────────────────────────────────── */
+  @media (max-width: 860px) {
+    nav { padding: 14px 24px; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-photo { height: 300px; }
+    .hero-content { padding: 40px 28px; }
+    .hero-signature { font-size: 52px; }
+    #intro, .case-inner, .testi-cols, #contact {
+      grid-template-columns: 1fr;
+    }
+    .case-inner.reverse { direction: ltr; }
+    .section, .case { padding: 56px 28px; }
+    #quote-1, #leadership-quote, #testimonials { padding: 60px 28px; }
+    .contact-content { padding: 48px 28px; }
+    .contact-photo { border-radius: 0; }
+  }
+
+  /* ── Image placeholders ──────────────────────────────── */
+  .img-placeholder {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(77,217,192,0.06),
+      rgba(77,217,192,0.06) 10px,
+      rgba(77,217,192,0.12) 10px,
+      rgba(77,217,192,0.12) 20px
+    );
+    border: 2px dashed var(--teal);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    padding: 32px;
+    text-align: center;
+    gap: 12px;
+  }
+  .img-placeholder .ph-icon {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+  .img-placeholder .ph-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    background: rgba(77,217,192,0.15);
+    border: 1px solid rgba(77,217,192,0.4);
+    border-radius: 6px;
+    padding: 6px 14px;
+  }
+  .img-placeholder .ph-filename {
+    font-size: 13px;
+    font-family: monospace;
+    color: var(--slate);
+    background: rgba(255,255,255,0.7);
+    border-radius: 4px;
+    padding: 4px 10px;
+  }
+  .img-placeholder .ph-desc {
+    font-size: 12px;
+    color: var(--slate-light);
+    max-width: 260px;
+    line-height: 1.5;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#hero" class="nav-sig">Jill Barrott</a>
+  <ul class="nav-links">
+    <li><a href="#intro">About</a></li>
+    <li><a href="#leadership-quote">Leadership</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#testimonials">Feedback</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-photo">
+    <!-- ↓ REPLACE: add LI_Banner_JB.png to your folder and update src below -->
+    <img src="LI_Banner_JB.png" alt="Jill Barrott at her desk"
+      onerror="this.replaceWith(document.getElementById('hero-ph').content.cloneNode(true))">
+    <template id="hero-ph">
+      <div class="img-placeholder" style="height:100%;border-radius:0;">
+        <svg class="ph-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="40" height="32" rx="3" stroke="#4dd9c0" stroke-width="2"/><circle cx="17" cy="20" r="4" stroke="#4dd9c0" stroke-width="2"/><path d="M4 36l10-8 7 6 7-5 16 11" stroke="#4dd9c0" stroke-width="2" stroke-linejoin="round"/></svg>
+        <div class="ph-label">📸 Replace with your banner image</div>
+        <div class="ph-filename">LI_Banner_JB.png</div>
+        <div class="ph-desc">Your LinkedIn banner / desk photo — used in the hero and contact sections</div>
+      </div>
+    </template>
+  </div>
+  <div class="hero-content">
+    <div class="hero-signature">Jill Barrott</div>
+    <div class="hero-tagline">
+      Brand Communications
+      <span>·</span>
+      Strategy
+      <span>·</span>
+      Intentional Leadership
+    </div>
+    <div class="hero-contact">
+      <a href="mailto:jillian.barrott@gmail.com">jillian.barrott@gmail.com</a>
+      <p>204-918-4418</p>
+    </div>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="section" id="intro">
+  <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div class="intro-text reveal">
+      <h2>Hi, I'm Jill.</h2>
+      <p>I'm a marketing and communications leader who builds structure where things are messy and momentum where things are stuck.</p>
+      <p>I'm equally comfortable zooming out to shape strategy and zooming in to write the message, build the plan, or get something out the door quickly when timing matters.</p>
+      <p>I'm also a coach at heart. I pay as much attention to developing the people around me as I do to the work itself.</p>
+    </div>
+    <div class="intro-img reveal">
+      <!-- ↓ REPLACE: add a headshot photo and update src. Suggested filename: headshot.jpg -->
+      <img src="headshot.jpg" alt="Jill Barrott" style="width:100%;border-radius:16px;display:block;"
+        onerror="this.replaceWith(document.getElementById('headshot-ph').content.cloneNode(true))">
+      <template id="headshot-ph">
+        <div class="img-placeholder">
+          <svg class="ph-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="16" r="8" stroke="#4dd9c0" stroke-width="2"/><path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#4dd9c0" stroke-width="2" stroke-linecap="round"/></svg>
+          <div class="ph-label">📸 Add your headshot here</div>
+          <div class="ph-filename">headshot.jpg</div>
+          <div class="ph-desc">A professional photo of you — ideally square or portrait oriented</div>
+        </div>
+      </template>
+    </div>
+  </div>
+  <div class="watermark">Jill</div>
+</section>
+
+<!-- Quote 1 -->
+<section class="section" id="quote-1" style="text-align:center;padding:100px 60px;">
+  <div class="big-quote reveal">"I've never waited for a title to start leading."</div>
+  <div class="quote-sig reveal">Jill Barrott</div>
+  <div class="footer-bar" style="position:absolute;bottom:0;left:0;right:0;"></div>
+</section>
+
+<!-- Leadership -->
+<section class="section" id="leadership-quote" style="padding:90px 60px;">
+  <div class="lq-inner">
+    <div class="eyebrow">Leadership Perspective</div>
+    <h2 class="reveal">A leader without a philosophy has already failed their team</h2>
+    <p class="reveal">Knowing what good leadership looks like is one thing. Having the courage to practice it — especially when it costs something — is another.</p>
+
+    <div class="pillars reveal">
+      <div class="pillar">
+        <h3>Set them up for success</h3>
+        <p>If someone I'm guiding takes an unexpected path, I ask myself first: did I give them what they needed to succeed? Confusion is a leadership failure, not a people failure. When the brief is clear, the context is set, and the why is understood.</p>
+      </div>
+      <div class="pillar">
+        <h3>Composure is contagious</h3>
+        <p>When the pressure is on, my job isn't to match the urgency — it's to right-size it. "Here's the one thing we need to nail, and here's what good enough looks like today." That sentence has unlocked more forward motion than any motivational push ever has.</p>
+      </div>
+      <div class="pillar">
+        <h3>Build the scaffold for confidence</h3>
+        <p>Good coaching means meeting people where they are — not where you wish they were. The goal isn't to transfer my skills. It's to build their confidence until they don't need the scaffold anymore.</p>
+      </div>
+      <div class="pillar">
+        <h3>The why is the work</h3>
+        <p>When I coach emerging writers, the first thing I push them toward is Sinek's question: who are you writing for, and what do they need? Set the why. People do better work when they understand the purpose they're serving.</p>
+      </div>
+      <div class="pillar">
+        <h3>I'd pay money for the lesson of a mistake</h3>
+        <p>Every mistake someone makes is a coaching opportunity. The moment you fix it for them, you've stolen their chance to learn.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:56px;" class="reveal">
+      <div class="eyebrow" style="margin-bottom:8px;">Leadership isn't a promotion. It's a practice.</div>
+      <p style="max-width:720px;">The leadership challenge I'm most honest with myself about: making unpopular decisions. Not letting the desire to be liked get in the way of giving my team what they actually need. I work on this. It's the gap between knowing what good leadership looks like and having the courage to do it when it costs something.</p>
+    </div>
+  </div>
+  <div class="watermark">Jill Barrott</div>
+</section>
+
+<!-- ── WORK ──────────────────────────────────────────────── -->
+<div id="work-placeholder-start"></div>
+<div id="work"><!-- grid injected by JS --></div>
+
+<!-- Modal overlay -->
+<div id="modal-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(20,35,48,0.7);backdrop-filter:blur(6px);overflow-y:auto;padding:40px 20px;" onclick="if(event.target===this)closeModal()">
+  <div id="modal-box" style="background:var(--bg-end);border-radius:20px;max-width:820px;margin:0 auto;overflow:hidden;box-shadow:0 8px 60px rgba(0,0,0,0.25);position:relative;">
+    <button onclick="closeModal()" style="position:absolute;top:20px;right:20px;background:rgba(77,217,192,0.15);border:none;border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer;color:var(--slate);line-height:1;z-index:10;">×</button>
+    <div id="modal-img-wrap" style="width:100%;max-height:320px;overflow:hidden;background:var(--bg-start);">
+      <img id="modal-img" src="" alt="" style="width:100%;display:block;object-fit:cover;max-height:320px;">
+    </div>
+    <div style="padding:40px 48px 48px;">
+      <div id="modal-label" style="font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--slate-light);margin-bottom:10px;"></div>
+      <h2 id="modal-title" style="font-size:28px;font-weight:700;color:var(--teal);line-height:1.2;margin-bottom:28px;"></h2>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const cases = [
+  {
+    label: "Marketing Strategy & Infrastructure",
+    title: "Building the Framework That Made Expansion Marketing Possible",
+    img: "Lac_du_Bonnet_Clipper_-_April_23.png",
+    imgAlt: "Valley Fiber newspaper ad",
+    summary: "Built Valley Fiber's first structured expansion marketing framework from scratch — connecting awareness, permissions, and sales to construction milestones.",
+    body: `
+      <div class="modal-block"><h3>Situation</h3><p>Valley Fiber was expanding into new communities, but there was no defined marketing structure to support it. Without a framework, campaigns risked being reactive, misaligned with construction timelines, and inconsistent across regions. Someone needed to build the system from scratch.</p></div>
+      <div class="modal-block"><h3>What I built</h3><ul>
+        <li>Created Valley Fiber's first structured expansion marketing framework — connecting awareness, permissions, and sales activity to construction milestones</li>
+        <li>Developed milestone-sequenced campaign activity across print, OOH, direct mail, and digital</li>
+        <li>Implemented vanity URLs to track attribution across traditionally unmeasurable channels</li>
+        <li>Built regionalized messaging for community-specific publications</li>
+      </ul></div>
+      <div class="modal-block"><h3>The insight</h3><p>Connecting every campaign decision to a construction phase meant the team always knew what to say, when to say it, and how to measure whether it worked. This framework is the foundation every other case in this portfolio was built on.</p></div>`
+  },
+  {
+    label: "Omni-Channel Campaign",
+    title: "Turning Offline Awareness Into Measurable Customer Intent",
+    img: "",
+    imgAlt: "",
+    summary: "Proved that offline radio and print campaigns were driving real online behaviour — with a +115.7% lift in organic search during the radio launch phase.",
+    metrics: ["+13.6% Direct traffic", "+115.7% Organic Search", "+17.2% Engagement time"],
+    body: `
+      <div class="modal-block"><h3>Situation</h3><p>Valley Fiber launched a coordinated awareness campaign across radio, print, and field activation channels. The challenge wasn't just generating awareness — it was proving whether the activity was influencing customer behaviour in a meaningful way.</p></div>
+      <div class="modal-block"><h3>My approach</h3><ul>
+        <li>Established campaign baselines and phased performance tracking</li>
+        <li>Connected offline campaign timing to website behaviour analysis</li>
+        <li>Introduced vanity URLs and attribution methods for traditionally difficult-to-measure channels</li>
+        <li>Focused reporting on behavioural signals and engagement quality, not just traffic volume</li>
+        <li>Framed findings through an executive-level narrative tied to business impact</li>
+      </ul></div>
+      <div class="modal-block"><h3>Key results</h3>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
+          <div style="flex:1;min-width:120px;background:rgba(77,217,192,0.1);border:1px solid rgba(77,217,192,0.3);border-radius:10px;padding:14px 18px;"><div style="font-size:24px;font-weight:700;color:var(--teal);">+13.6%</div><div style="font-size:11px;color:var(--slate-light);margin-top:4px;">Direct traffic during campaign rollout</div></div>
+          <div style="flex:1;min-width:120px;background:rgba(77,217,192,0.1);border:1px solid rgba(77,217,192,0.3);border-radius:10px;padding:14px 18px;"><div style="font-size:24px;font-weight:700;color:var(--teal);">+115.7%</div><div style="font-size:11px;color:var(--slate-light);margin-top:4px;">Organic Search during radio launch phase</div></div>
+          <div style="flex:1;min-width:120px;background:rgba(77,217,192,0.1);border:1px solid rgba(77,217,192,0.3);border-radius:10px;padding:14px 18px;"><div style="font-size:24px;font-weight:700;color:var(--teal);">+17.2%</div><div style="font-size:11px;color:var(--slate-light);margin-top:4px;">Average engagement time</div></div>
+        </div>
+      </div>`
+  },
+  {
+    label: "Public Relations & Brand Building",
+    title: "Turning Recognition Into a Strategic Growth Lever",
+    img: "Manitoba_Champions_Award_Portfolio_pg_2.jpg",
+    imgAlt: "Manitoba Champions Award nomination",
+    summary: "Turned two regional award wins into a coordinated brand and sales activation strategy — from submission narratives to media pitches and executive prep.",
+    body: `
+      <div class="modal-block"><h3>Situation</h3><p>Valley Fiber was named a finalist — and ultimately selected as the winner — for two regional awards recognising community impact and business innovation. My role wasn't the work behind the awards. It was recognising the story worth telling and making sure it got heard.</p></div>
+      <div class="modal-block"><h3>What I built</h3><ul>
+        <li>Developed and wrote both award submission narratives</li>
+        <li>Sourced data, imagery, and testimonials to substantiate each submission</li>
+        <li>Built coordinated communications plans for each win: internal announcements, website content, social media, and sales enablement materials</li>
+        <li>Developed executive speaking notes and interview preparation for media appearances</li>
+        <li>Pitched stories to local media and secured scheduled interview coverage</li>
+        <li>Designed submission layouts and presentations for clarity and brand alignment</li>
+      </ul></div>
+      <div class="modal-block"><h3>The insight</h3><p>Recognition only creates value when it's activated. Winning an award is a moment. Turning it into a narrative that strengthens commercial credibility, supports sales conversations, and reinforces brand momentum — that's a strategy.</p></div>`
+  },
+  {
+    label: "Email Marketing — A/B Testing",
+    title: "When the Offer Isn't the Problem — Friction Is",
+    img: "",
+    imgAlt: "",
+    summary: "Designed a controlled A/B winback email test that revealed simplicity outperforms value — customers chose the $50 offer over the $100 bundle.",
+    body: `
+      <div class="modal-block"><h3>Situation</h3><p>Valley Fiber wanted to win back former customers, but it wasn't clear which type of incentive would drive reconversion. The question wasn't how big the offer should be — it was what kind of offer actually changes behaviour.</p></div>
+      <div class="modal-block"><h3>What I built</h3><p>I designed and executed a controlled A/B test within a winback email campaign. Group A received a $50 gift card for signing up for internet service. Group B received a $100 gift card for signing up for a bundled package. I monitored conversion rates, offer uptake, and package selection behaviour across both groups.</p></div>
+      <div class="modal-block"><h3>The insight</h3><p>Not all incentives drive equal behaviour. Customers responded more strongly to offers that were simple to understand, easy to act on, and lower in commitment. Complexity works against conversion — even when offering higher-value incentives.</p></div>`
+  },
+  {
+    label: "Crisis Communications",
+    title: "Thirty Minutes From Problem to Published",
+    img: "",
+    imgAlt: "",
+    summary: "Identified a phone routing outage affecting customers, escalated it as a communications problem, and published clear customer messaging within 30 minutes.",
+    body: `
+      <div class="modal-block"><h3>Situation</h3><p>A phone routing issue was affecting customers, but it hadn't been flagged internally. Without swift, clear communication, customers would experience the problem with no context — eroding trust at exactly the moment it mattered most.</p></div>
+      <div class="modal-block"><h3>My approach</h3><ul>
+        <li>Identified the phone routing issue and recognised it as a customer communications problem, not just a technical one</li>
+        <li>Escalated findings with contextual intelligence to help the team understand the scope</li>
+        <li>Drafted, approved, and published customer communications across web and social within 30 minutes of identification</li>
+        <li>Maintained brand voice and customer-first framing under time pressure</li>
+      </ul></div>
+      <div class="modal-block"><h3>The insight</h3><p>Speed matters in a crisis, but clarity matters more. Customers can tolerate problems they understand. What erodes trust is silence.</p></div>`
+  },
+  {
+    label: "Product Launch — Content Marketing",
+    title: "Turning a Financial Product into a Human Story",
+    img: "resp-poster.png",
+    imgAlt: "Canada Life RESP poster",
+    summary: "Rewrote jargon-heavy RESP materials into plain, human content that moved customers from avoidance to action — for Canada Life.",
+    body: `
+      <div class="modal-block"><h3>The challenge</h3><p>The biggest barrier to RESP adoption is that they take too much work to set up. Consumer materials were jargon-heavy and emotionally loaded — more likely to create anxiety than action. The goal was to give customers a clear picture of why the Canada Life RESP was different, and the confidence to act on it.</p></div>
+      <div class="modal-block"><h3>My approach</h3><ul>
+        <li>Simplified language and removed friction</li>
+        <li>Focused on future outcomes vs technical details</li>
+        <li>Built confidence through accessible messaging</li>
+        <li>Balanced compliance with human tone</li>
+      </ul></div>
+      <div class="modal-block"><h3>The impact</h3><p>Customers who had historically avoided RESP conversations were engaging with the content and moving forward with applications. Canada Life had a product worth buying — the content finally made it feel that way.</p></div>`
+  },
+  {
+    label: "Content Marketing",
+    title: "Making a Stigmatized Topic Safe to Talk About at Work",
+    img: "menopause-guide.png",
+    imgAlt: "Canada Life menopause workplace guide",
+    summary: "Created Canada Life's employer guide on menopause in the workplace — empathetic, research-grounded content that gave employers language they didn't have before.",
+    body: `
+      <div class="modal-block"><h3>Situation</h3><p>Menopause is widely experienced but still a taboo topic in the workplace. Many employees feel embarrassed or unsupported, while employers often lack the language or confidence to address it. The challenge was to make the topic approachable, reduce stigma, and empower supportive conversations.</p></div>
+      <div class="modal-block"><h3>My approach</h3><ul>
+        <li>Grounded content in real experience and research</li>
+        <li>Used inclusive, accessible language</li>
+        <li>Led with empathy to reduce resistance</li>
+        <li>Shifted from awareness to actionable support</li>
+      </ul></div>
+      <div class="modal-block"><h3>The impact</h3><p>Canada Life entered content marketing as a thought leader on one of the most underreported workplace health topics — giving employers language they didn't have before, and employees a signal that their experience was visible and valued.</p></div>`
+  }
+];
+
+// Placeholder SVG for cards with no image
+const phSVG = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,rgba(77,217,192,0.04),rgba(77,217,192,0.04) 10px,rgba(77,217,192,0.09) 10px,rgba(77,217,192,0.09) 20px);">
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="40" height="32" rx="3" stroke="#4dd9c0" stroke-width="2"/><circle cx="17" cy="20" r="4" stroke="#4dd9c0" stroke-width="2"/><path d="M4 36l10-8 7 6 7-5 16 11" stroke="#4dd9c0" stroke-width="2" stroke-linejoin="round"/></svg>
+</div>`;
+
+function buildGrid() {
+  const wrap = document.getElementById('work');
+  wrap.innerHTML = `
+    <section style="padding:80px 60px;background:linear-gradient(160deg,var(--bg-start) 0%,var(--bg-end) 100%);border-top:1px solid var(--rule);">
+      <div style="max-width:1100px;margin:0 auto;">
+        <div class="eyebrow">Selected Work</div>
+        <h2 style="font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--teal);margin-bottom:48px;line-height:1.2;">Strategy, content, and campaigns<br>that moved the needle.</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;">
+          ${cases.map((c, i) => `
+            <div class="work-card reveal" onclick="openModal(${i})" style="background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 36px rgba(30,45,58,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow)'">
+              <div style="height:180px;overflow:hidden;position:relative;">
+                ${c.img
+                  ? `<img src="${c.img}" alt="${c.imgAlt}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.parentElement.innerHTML='${phSVG.replace(/'/g,"\\'")}'">`
+                  : phSVG}
+              </div>
+              <div style="padding:22px 24px 26px;">
+                <div style="font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--slate-light);margin-bottom:8px;">${c.label}</div>
+                <div style="font-size:16px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:10px;">${c.title}</div>
+                <div style="font-size:13px;color:var(--slate);line-height:1.6;margin-bottom:18px;">${c.summary}</div>
+                <div style="font-size:12px;font-weight:600;color:var(--teal-dark);">Read case study →</div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+  // re-run reveal observer on new cards
+  // Work cards will be picked up by the revealObserver after buildGrid() runs.
+  // Do not observe here because revealObserver is defined later in the file.
+}
+
+function openModal(i) {
+  const c = cases[i];
+  document.getElementById('modal-label').textContent = c.label;
+  document.getElementById('modal-title').textContent = c.title;
+  document.getElementById('modal-body').innerHTML = c.body;
+  const imgWrap = document.getElementById('modal-img-wrap');
+  const img = document.getElementById('modal-img');
+  if (c.img) {
+    img.src = c.img;
+    img.alt = c.imgAlt;
+    imgWrap.style.display = 'block';
+    img.onerror = () => { imgWrap.style.display = 'none'; };
+  } else {
+    imgWrap.style.display = 'none';
+  }
+  const overlay = document.getElementById('modal-overlay');
+  overlay.style.display = 'block';
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+buildGrid();
+</script>
+
+<!-- modal block styles -->
+<style>
+.modal-block { margin-bottom: 24px; }
+.modal-block h3 { font-size:15px;font-weight:600;color:var(--lime);margin-bottom:8px; }
+.modal-block p { font-size:14.5px;color:var(--slate);line-height:1.7; }
+.modal-block ul { list-style:none;padding:0; }
+.modal-block ul li { font-size:14.5px;color:var(--slate);padding:5px 0 5px 18px;position:relative;line-height:1.6; }
+.modal-block ul li::before { content:'•';position:absolute;left:0;color:var(--teal); }
+</style>
+
+<!-- dummy anchor so the old individual case sections no longer exist -->
+<div id="work-placeholder-end"></div>
+
+
+<!-- Testimonials -->
+<section class="section" id="testimonials" style="padding:80px 60px;">
+  <div class="testimonials-grid">
+    <div class="eyebrow">Feedback</div>
+    <h2 class="reveal">Leadership isn't a promotion. It's a practice.</h2>
+    <div class="testi-cols reveal">
+      <div class="testi-card">
+        <p>"Jill conveys what she wants to see very clearly. You can visualize her vision from a Teams message or a project brief. Her communication is detail-oriented but always gets to the point — impactful wording without the noise."</p>
+        <cite>— Carlos M., Marketing Coordinator at Valley Fiber</cite>
+      </div>
+      <div class="testi-card">
+        <p>"I appreciate the way you give feedback. Each time I'm assigned to a draft, you acknowledge the effort and your comments are always specific and helpful. Because of your encouragement and guidance, my confidence grew on this project."</p>
+        <cite>— Joyce Gactucan, Marketing Coordinator at Canada Life</cite>
+      </div>
+    </div>
+    <div class="blockquote-feature reveal">
+      <div class="bq-open">"</div>
+      <p>I'm looking for accountability that matches the way I already work. A role where I can set direction, develop people deliberately, and build a team whose trust in each other is what makes the work exceptional.</p>
+      <div class="bq-close">"</div>
+    </div>
+  </div>
+  <div class="watermark">Barrott</div>
+</section>
+
+<!-- Contact -->
+<section style="display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(160deg,var(--bg-start) 0%,var(--bg-end) 100%);" id="contact">
+  <div style="overflow:hidden;max-height:480px;">
+    <!-- ↓ REPLACE: same file as hero — LI_Banner_JB.png — or swap for a different photo -->
+    <img src="LI_Banner_JB.png" alt="Jill Barrott" style="width:100%;height:100%;object-fit:cover;object-position:left center;display:block;"
+      onerror="this.replaceWith(document.getElementById('contact-ph').content.cloneNode(true))">
+    <template id="contact-ph">
+      <div class="img-placeholder" style="height:480px;border-radius:0;">
+        <svg class="ph-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="40" height="32" rx="3" stroke="#4dd9c0" stroke-width="2"/><circle cx="17" cy="20" r="4" stroke="#4dd9c0" stroke-width="2"/><path d="M4 36l10-8 7 6 7-5 16 11" stroke="#4dd9c0" stroke-width="2" stroke-linejoin="round"/></svg>
+        <div class="ph-label">📸 Contact section photo</div>
+        <div class="ph-filename">LI_Banner_JB.png</div>
+        <div class="ph-desc">Same banner image as the hero, or swap for a different photo</div>
+      </div>
+    </template>
+  </div>
+  <div class="contact-content reveal">
+    <h2>
+      <span>Empower others.</span>
+      <span>Drive change.</span>
+      <span>Build trust.</span>
+    </h2>
+    <p style="font-size:17px;font-weight:700;color:var(--navy);margin-bottom:24px;">Let's connect and get to work.</p>
+    <div class="contact-details">
+      <div class="name">Jill Barrott</div>
+      <div class="location">Manitoba, Canada</div>
+      <div class="contact-label">Email</div>
+      <a href="mailto:jillian.barrott@gmail.com">jillian.barrott@gmail.com</a>
+      <div class="contact-label">Phone</div>
+      <p>204-918-4418</p>
+    </div>
+  </div>
+</section>
+
+<div class="footer-bar"></div>
+<div style="text-align:center;padding:20px;font-size:12px;color:var(--slate-light);background:var(--bg-end);">
+  © 2026 Jill Barrott
+</div>
+
+<script>
+  // Scroll reveal — exposed as revealObserver so the grid can register new cards
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
