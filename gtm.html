@@ -712,7 +712,8 @@ const cases = [
   label: "Community Engagement Strategy",
   title: "From One-Off Tactics to a Scalable Community Engagement Playbook",
   img: "Valley Fiber investment one-pager.png",
-  imgAlt: "Valley Fiber community investment messaging developed as part of the community engagement toolkit",
+modalImg: "External stakeholder journey.png",
+imgAlt: "Valley Fiber community investment messaging developed as part of the community engagement toolkit",
   summary: "Reframed a tactical communications request into a repeatable community engagement strategy — connecting stakeholder relationships, customer experience, and acquisition goals within a practical, resource-conscious playbook.",
   body: `
     <div class="modal-block">
@@ -927,7 +928,7 @@ function openModal(i) {
   const imgWrap = document.getElementById('modal-img-wrap');
   const img = document.getElementById('modal-img');
   if (c.img) {
-    img.src = c.img;
+    img.src = c.modalImg || c.img;
     img.alt = c.imgAlt;
     imgWrap.style.display = 'block';
     img.onerror = () => { imgWrap.style.display = 'none'; };
